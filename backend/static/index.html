@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OraKula | Predicción de Apuestas Deportivas</title>
+
+  <!-- Fuente y estilos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="/static/styles.css?v=3" />
+</head>
+<body>
+  <header>
+    <nav class="topnav" aria-label="principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#predicciones">Predicciones</a>
+      <a href="#mercados">Mercados</a>
+      <a href="#historial">Historial</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="hero" id="inicio">
+      <h1 class="brand">OraKula — Sports AI</h1>
+      <p>Carga partidos, calcula probabilidades, muestra sugerencias de apuesta y registra el historial.</p>
+      <div class="row" role="group" aria-label="acciones de héroe">
+        <a class="btn" href="#predicciones">Ir a Predicción</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid" id="predicciones">
+      <!-- Columna izquierda: filtros y resultados -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Generar predicción</div>
+            <div class="card-sub">Selecciona parámetros.</div>
+          </div>
+        </div>
+
+        <!-- IMPORTANTE: IDs y names EXACTOS como tu versión funcional -->
+        <form class="filters" id="predictForm">
+          <!-- Si tu app.js no usa "sport", no afecta; se puede dejar o quitar -->
+          <div class="field">
+            <label for="league">Liga</label>
+            <select id="league" name="league">
+              <option>LaLiga</option>
+              <option>Premier League</option>
+              <option>Liga MX</option>
+              <!-- puedes añadir más ligas sin afectar -->
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="home">Local</label>
+            <!-- Mantener SELECT para que app.js lo rellene dinámicamente -->
+            <select id="home" name="home"></select>
+          </div>
+
+          <div class="field">
+            <label for="away">Visitante</label>
+            <!-- Mantener SELECT para que app.js lo rellene dinámicamente -->
+            <select id="away" name="away"></select>
+          </div>
+
+          <div class="field">
+            <label for="market">Mercado</label>
+            <select id="market" name="market">
+              <option value="1x2">1X2</option>
+              <option value="over25">Más de 2.5</option>
+              <option value="btts">Ambos marcan</option>
+            </select>
+          </div>
+
+          
+
+
+          <div class="field">
+            <label for="odds">Cuota (opcional)</label>
+            <input id="odds" name="odds" type="number" step="0.01" placeholder="Ej. 1.85" />
+          </div>
+
+          <div class="actions">
+            <button class="btn" type="submit">Calcular</button>
+            <button class="btn secondary" type="button" id="resetBtn">Limpiar</button>
+          </div>
+        </form>
+
+        <div class="space"></div>
+
+        <!-- RESULTADOS: mantiene IDs probValue, evValue y pickValue -->
+        <div class="result-wrap" id="resultWrap" aria-live="polite">
+          <div class="kpi" id="probKpi">
+            <h3>Probabilidad</h3>
+            <div class="value" id="probValue">—</div>
+          </div>
+          <div class="kpi" id="evKpi">
+            <h3>Valor Esperado (EV)</h3>
+            <div class="value" id="evValue">—</div>
+          </div>
+          <div class="kpi" id="pickKpi">
+            <h3>Sugerencia</h3>
+            <div class="value" id="pickValue">—</div>
+          </div>
+        </div>
+      </div>
+      <!-- /card -->
+    </section>
+  </main>
+
+  <footer>
+    <div>&copy; <span id="y"></span> OraKula Sports AI • Derechos Reservados</div>
+    <div>Integrantes: Jhader Castellar • Carlos Valencia • Elmer Córdoba</div>
+  </footer>
+
+  <script>
+    // Año dinámico en footer
+    document.addEventListener('DOMContentLoaded', () => {
+      const y = document.getElementById('y');
+      if (y) y.textContent = new Date().getFullYear();
+    });
+  </script>
+
+  <!-- Mantén tu misma ruta de JS para no romper nada -->
+  <script src="/static/app.js"></script>
+</body>
+</html>
+
