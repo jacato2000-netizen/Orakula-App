@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # clientePredict
 Proyecto de ejemplo que integra frontend y backend en un único servidor FastAPI.
 
@@ -17,3 +18,5 @@ Proyecto de ejemplo que integra frontend y backend en un único servidor FastAPI
    uvicorn backend.main:app --reload
 5. Abrir en el navegador:
    http://127.0.0.1:8000
+=======
+
